@@ -1,6 +1,9 @@
 const express = require("express");
 const mongoose = require("mongoose");
 
+//Routes
+const items = require("./routes/items");
+
 const app = express();
 
 mongoose.connect("mongodb://localhost:27017/ShoppingCartDB", { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
