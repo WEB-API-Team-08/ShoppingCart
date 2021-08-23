@@ -10,7 +10,7 @@ router.get("/:itemId", async (req, res) => {
             return res.status(404).send("Given ID does not exist");
         }
 
-        return res.send(item);
+        return res.status(200).send(item);
     }
     catch (e) {
         return res.status(500).send("Database/Server Error");
