@@ -1,9 +1,15 @@
 const { Router } = require("express");
 const Item = require("../models/item");
+const { idValidation } = require("../validations/idValidation");
 const router = Router();
 
 router.get("/:itemId", async (req, res) => {
     let itemId = req.params.itemId;
+
+    //Validate the data before we create a link
+    const { error } = idValidation({ _id: itemId });
+    if (error) return res.status(400).send({ message: error.details[0].message });
+
     try {
         let item = await Item.findById(itemId);
         if (!item) {
