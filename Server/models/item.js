@@ -7,12 +7,6 @@ const itemSchema = new mongoose.Schema({
         maxlength: 50,
         required: true
     },
-    itemDesc: {
-        type: "String",
-        minlength: 2,
-        maxlength: 500,
-        required: true
-    },
     likeCount: {
         type: Number,
         default: 0,
