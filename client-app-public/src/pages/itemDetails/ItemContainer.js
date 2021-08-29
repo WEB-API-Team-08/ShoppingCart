@@ -1,12 +1,24 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 import { useCart } from '../../hooks/useCart';
 import { formatNumber } from '../../helpers/utils';
 
-const ProductItem = ({ product }) => {
+const ItemContainer = ({ id }) => {
 
     const { addProduct, cartItems, increase } = useCart();
+    const [product, setProduct] = useState([]);
+
+
+    useEffect(async () => {
+        await axios.get(`http://localhost:5000/api/items/${id}`)
+            .then(res => {
+                setProduct(res.data)
+            }).catch(err => {
+                console.log(err)
+            })
+
+    }, [])
 
     const isInCart = product => {
         return !!cartItems.find(item => item._id === product._id);
@@ -14,12 +26,11 @@ const ProductItem = ({ product }) => {
 
     return (
         <div className="card card-body">
-            <img style={{ display: "block", margin: "0 auto 10px", maxHeight: "200px" }} className="img-fluid"
-                src={product.imgUrl + '?v=' + product._id} alt="" />
+            <img style={{ display: "block", margin: "0 auto 10px", maxHeight: "400px" }} className="img-fluid"
+                src={product.imgUrl} alt="" />
             <p>{product.itemName}</p>
             <h3 className="text-left">{formatNumber(product.price)}</h3>
             <div className="text-right">
-                <Link to={`/details/${product._id}`} className="btn btn-link btn-sm mr-2">Details</Link>
 
                 {
                     isInCart(product) &&
@@ -40,4 +51,4 @@ const ProductItem = ({ product }) => {
     );
 }
 
-export default ProductItem;
+export default ItemContainer;
