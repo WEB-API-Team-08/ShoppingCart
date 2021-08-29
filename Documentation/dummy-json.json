@@ -1,0 +1,62 @@
+[
+    {
+        "itemName": "Buffalo - Striploin",
+        "price": 39.11,
+        "likeCount": 1000,
+        "imgUrl": "https://i.ibb.co/9n7zq5n/2.jpg",
+    },
+    {
+        "itemName": "Bacardi Breezer - Tropical",
+        "price": 257.92,
+        "likeCount": 2000,
+        "imgUrl": "https://i.ibb.co/9n7zq5n/2.jpg"
+    },
+    {
+        "itemName": "Wine - Gato Negro Cabernet",
+        "price": 51.01,
+        "likeCount": 1000,
+        "imgUrl": "https://i.ibb.co/9n7zq5n/2.jpg"
+    },
+    {
+        "itemName": "Cabbage - Nappa",
+        "price": 250.90,
+        "likeCount": 2000,
+        "imgUrl": "https://i.ibb.co/9n7zq5n/2.jpg"
+    },
+    {
+        "itemName": "Sping Loaded Cup Dispenser",
+        "price": 175.85,
+        "likeCount": 5000,
+        "imgUrl": "https://i.ibb.co/9n7zq5n/2.jpg"
+    },
+    {
+        "itemName": "Bread - Malt",
+        "price": 82.61,
+        "likeCount": 1000,
+        "imgUrl": "https://i.ibb.co/9n7zq5n/2.jpg"
+    },
+    {
+        "itemName": "Glass Clear 8 Oz",
+        "price": 201.10,
+        "likeCount": 1000,
+        "imgUrl": "https://i.ibb.co/9n7zq5n/2.jpg"
+    },
+    {
+        "itemName": "Sour Puss Raspberry",
+        "price": 134.99,
+        "likeCount": 2000,
+        "imgUrl": "https://i.ibb.co/9n7zq5n/2.jpg"
+    },
+    {
+        "itemName": "Pork - Chop, Frenched",
+        "price": 199.16,
+        "likeCount": 1000,
+        "imgUrl": "https://i.ibb.co/9n7zq5n/2.jpg"
+    },
+    {
+        "itemName": "Bagels Poppyseed",
+        "price": "123.82",
+        "likeCount": 3000,
+        "imgUrl": "https://i.ibb.co/dc1PhyP/1.jpg"
+    },
+]
