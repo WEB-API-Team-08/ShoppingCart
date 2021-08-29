@@ -6,6 +6,7 @@ const cors = require("cors");
 const logHandler = require("./middleware/logger");
 
 //Routes
+const home = require("./routes/home");
 const items = require("./routes/items");
 
 
@@ -21,9 +22,7 @@ app.use(express.json()); // Parse JSON objects in requests
 app.use(logHandler); //Request logger middleware
 
 //Route Handlers
-app.get("/", (req, res) => {
-    res.send("Hello");
-});
+app.use('/', home);
 app.use('/api/items', items);
 
 
