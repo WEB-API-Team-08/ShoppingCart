@@ -3,6 +3,18 @@ const Item = require("../models/item");
 const { idValidation } = require("../validations/idValidation");
 const router = Router();
 
+
+// GET ALL
+router.get("/", async (req, res) => {
+    try {
+      let item = await Item.find().sort({ itemName: "desc" });
+      res.send(item);
+    } catch (ex) {
+      return res.status(500).send("Error", ex.message);
+    }
+  });
+
+
 router.get("/:itemId", async (req, res) => {
     let itemId = req.params.itemId;
 
@@ -23,6 +35,8 @@ router.get("/:itemId", async (req, res) => {
     }
 
 });
+
+
 
 module.exports = router;
 
