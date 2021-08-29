@@ -18,23 +18,15 @@ const ProductsContextProvider = ({children}) => {
 
     },[])
 
-    //console.log("dummyProducts",dummyProducts)
   
     return ( 
 
-  // console.log(products)
+
         <ProductsContext.Provider value={{products}} >
             { children }
         </ProductsContext.Provider>
      );
 }
 
-// const testDataset = async () => {
-
-//     console.log("hit");
-//     const { data } = await ApiService.get("http://localhost:5000/api/items");
-//     console.log("data",data);
-//     return data;
-// }
  
 export default ProductsContextProvider;
