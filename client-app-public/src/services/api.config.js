@@ -1,10 +1,10 @@
 import axios from 'axios'
-import { TokenService } from './services/storage.service'
+import { TokenService } from './storage.service'
 
 const ApiService = {
 
-    init(baseURL) {
-        axios.defaults.baseURL = baseURL;
+    init() {
+        axios.defaults.baseURL = "http://localhost:5000";
     },
 
     setHeader() {
@@ -15,8 +15,8 @@ const ApiService = {
         axios.defaults.headers.common = {}
     },
 
-    get(resource) {
-        return axios.get(resource)
+    async get(resource) {
+        return await axios.get(resource)
     },
 
     post(resource, data) {

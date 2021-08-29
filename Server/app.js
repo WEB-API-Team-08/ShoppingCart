@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 
 //Middleware
 const logHandler = require("./middleware/logger");
@@ -15,6 +16,7 @@ mongoose.connect("mongodb://localhost:27017/ShoppingCartDB", { useNewUrlParser: 
 
 const app = express();
 
+app.use(cors()); //Setup CORS policy
 app.use(express.json()); // Parse JSON objects in requests
 app.use(logHandler); //Request logger middleware
 
