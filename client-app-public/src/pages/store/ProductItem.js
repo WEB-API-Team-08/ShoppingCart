@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { useCart } from '../../hooks/useCart';
 import { formatNumber } from '../../helpers/utils';
+import LikeButton from '../../components/shared/LikeButton';
 
 const ProductItem = ({ product }) => {
 
@@ -18,23 +19,30 @@ const ProductItem = ({ product }) => {
                 src={product.imgUrl + '?v=' + product._id} alt="" />
             <p>{product.itemName}</p>
             <h3 className="text-left">{formatNumber(product.price)}</h3>
-            <div className="text-right">
-                <Link to={`/details/${product._id}`} className="btn btn-link btn-sm mr-2">Details</Link>
+            <div className="d-inline">
 
-                {
-                    isInCart(product) &&
-                    <button
-                        onClick={() => increase(product)}
-                        className="btn btn-outline-primary btn-sm">Add more</button>
-                }
+                <div className="d-inline float-left">
+                    <LikeButton className="d-inline float-left" id={product._id} likeCount={product.likeCount} />
+                </div>
 
-                {
-                    !isInCart(product) &&
-                    <button
-                        onClick={() => addProduct(product)}
-                        className="btn btn-primary btn-sm">Add to cart</button>
-                }
+                <div className="d-inline float-right">
+                    <Link to={`/details/${product._id}`} className="btn btn-link btn-sm mr-2">Details</Link>
 
+                    {
+                        isInCart(product) &&
+                        <button
+                            onClick={() => increase(product)}
+                            className="btn btn-outline-primary btn-sm">Add more</button>
+                    }
+
+                    {
+                        !isInCart(product) &&
+                        <button
+                            onClick={() => addProduct(product)}
+                            className="btn btn-primary btn-sm">Add to cart</button>
+                    }
+
+                </div>
             </div>
         </div>
     );
