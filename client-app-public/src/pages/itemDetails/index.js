@@ -8,7 +8,7 @@ const ItemDetails = (props) => {
 
     return (
         <Layout title="Item Detaills" description="This is the Item Details page" >
-            <div >
+            <div>
                 <div className="text-center mt-5">
                     <h1>Item Details</h1>
                     <p>This is the Item Details Page.</p>
