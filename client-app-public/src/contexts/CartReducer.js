@@ -1,3 +1,4 @@
+import axios from 'axios';
 
 const Storage = (cartItems) => {
     localStorage.setItem('cart', JSON.stringify(cartItems.length > 0 ? cartItems : []));
@@ -8,6 +9,30 @@ export const sumItems = cartItems => {
     let itemCount = cartItems.reduce((total, product) => total + product.quantity, 0);
     let total = cartItems.reduce((total, product) => total + product.price * product.quantity, 0).toFixed(2);
     return { itemCount, total }
+}
+
+const orderCheckout = async (cartItems) => {
+
+    let result = false;
+
+    const sendingcartItems = cartItems.map((item) => {
+        return {
+            _id: item._id,
+            itemName: item.itemName,
+            price: item.price,
+            quantity: item.quantity
+        }
+    });
+
+    return await axios.post(`http://localhost:5000/api/user/orders`, { cartItems: sendingcartItems })
+        .then(res => {
+            console.log(res.data);
+            return true;
+
+        }).catch(err => {
+            console.log(err);
+            return false;
+        });
 }
 
 export const CartReducer = (state, action) => {
@@ -46,10 +71,23 @@ export const CartReducer = (state, action) => {
                 cartItems: [...state.cartItems]
             }
         case "CHECKOUT":
-            return {
-                cartItems: [],
-                checkout: true,
-                ...sumItems([]),
+            {
+
+                if (orderCheckout(state.cartItems)) {
+                    return {
+                        cartItems: [],
+                        checkout: true,
+                        ...sumItems([]),
+                    }
+
+                }
+                else {
+                    return {
+                        ...state,
+                        ...sumItems(state.cartItems),
+                        cartItems: [...state.cartItems]
+                    }
+                }
             }
         case "CLEAR":
             return {
