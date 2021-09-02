@@ -15,6 +15,7 @@ const Header = () => {
         <header className={styles.header}>
             <Link to='/'>Store</Link>
             <Link to='/cart'> <CartIcon/> Cart ({itemCount})</Link>
+            <Link to='/orders'> Orders</Link>
             <LoginButton />
             <LogoutButton />
             <Profile />
