@@ -10,6 +10,7 @@ import Store from '../pages/store';
 import NotFound from '../pages/NotFound';
 import Cart from "../pages/cart";
 import ItemDetails from "../pages/itemDetails";
+import OrderDetails from "../pages/orderDetails";
 
 const Routes = () => {
   return (
@@ -19,6 +20,7 @@ const Routes = () => {
         <Route exact path="/" component={Store} />
         <Route path="/cart" component={Cart} />
         <Route path="/details/:itemId" component={ItemDetails} />
+        <Route path="/orderDetails/:orderId" component={OrderDetails} />
         <Route path="*" component={NotFound} />
       </Switch>
     </Router>
