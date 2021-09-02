@@ -4,27 +4,26 @@ const { orderValidation } = require("../validations/orderValidation");
 const { idValidation } = require("../validations/idValidation");
 const router = Router();
 
-router.post("/", async (req, res) => {
-
-
 
 //get
 router.get("/", async (req, res) => {
    
-console.log("checkpoint");
-    try {
-        let order = await Order.find();
-        if (!order) {
-            return res.status(404).send("Orders not found");
+    console.log("checkpoint");
+        try {
+            let order = await Order.find();
+            if (!order) {
+                return res.status(404).send("Orders not found");
+            }
+    
+            return res.status(200).send(order);
         }
+        catch (e) {
+            return res.status(500).send("Database/Server Error");
+        }
+    
+    });
 
-        return res.status(200).send(order);
-    }
-    catch (e) {
-        return res.status(500).send("Database/Server Error");
-    }
-
-});
+router.post("/", async (req, res) => {
 
 
     //Validate the data before we create an order
