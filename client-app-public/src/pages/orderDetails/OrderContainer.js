@@ -14,7 +14,6 @@ const OrderContainer = ({ id }) => {
     useEffect(() => {
         axios.get(`http://localhost:5000/api/user/orders/${id}`)
             .then(res => {
-                console.log("OrderContainer", res.data)
                 setOrder(res.data)
                 setCart(res.data.cart)
             }).catch(err => {
