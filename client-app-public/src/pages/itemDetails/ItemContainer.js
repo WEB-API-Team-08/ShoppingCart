@@ -19,7 +19,7 @@ const ItemContainer = ({ id }) => {
                 console.log(err)
             })
 
-    }, [])
+    }, [id])
 
     const isInCart = product => {
         return !!cartItems.find(item => item._id === product._id);
