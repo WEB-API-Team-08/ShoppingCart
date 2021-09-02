@@ -8,12 +8,14 @@ import OrderItem from './OrderItem';
 const OrderContainer = ({ id }) => {
 
     const [order, setOrder] = useState([]);
+    const [cart, setCart] = useState([]);
 
 
     useEffect(() => {
         axios.get(`http://localhost:5000/api/user/orders/${id}`)
             .then(res => {
                 setOrder(res.data)
+                setCart(res.data.cart)
             }).catch(err => {
                 console.log(err)
             });
@@ -23,9 +25,8 @@ const OrderContainer = ({ id }) => {
     return (
         <div className="card card-body">
             <div className={styles.p__container}>
-
                 {
-                    order.cart.map(item => (
+                    cart.map(item => (
                         <OrderItem key={item._id} item={item} />
                     ))
                 }
