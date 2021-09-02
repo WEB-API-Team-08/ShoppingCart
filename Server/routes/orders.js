@@ -8,6 +8,24 @@ router.post("/", async (req, res) => {
 
 
 
+//get
+router.get("/", async (req, res) => {
+   
+console.log("checkpoint");
+    try {
+        let order = await Order.find();
+        if (!order) {
+            return res.status(404).send("Orders not found");
+        }
+
+        return res.status(200).send(order);
+    }
+    catch (e) {
+        return res.status(500).send("Database/Server Error");
+    }
+
+});
+
 
     //Validate the data before we create an order
     const { error } = orderValidation(req.body);
