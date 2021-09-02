@@ -9,6 +9,8 @@ const logHandler = require("./middleware/logger");
 const home = require("./routes/home");
 const items = require("./routes/items");
 const orders = require("./routes/orders");
+const auth = require("./routes/auth");
+
 
 mongoose.connect("mongodb://localhost:27017/ShoppingCartDB", { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
     .then(() => console.log("Connected to db successfully....."))
@@ -25,6 +27,8 @@ app.use(logHandler); //Request logger middleware
 app.use('/', home);
 app.use('/api/items', items);
 app.use('/api/user/orders', orders);
+app.use('/api/user/login', auth);
+
 
 const PORT = 5000; //process.env.PORT;
 app.listen(PORT, () => console.log(`Listening to port ${PORT}`));
